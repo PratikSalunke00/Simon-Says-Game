@@ -44,6 +44,13 @@ function levelUp() {
     gameFlash(randBtn);
 }
 
+function reset() {
+    started = false;
+    gameSeq=[];
+    userSeq=[];
+    level = 0;
+}
+
 function checkAns(idx) {
     if (userSeq[idx] === gameSeq[idx]) {
         if  (userSeq.length == gameSeq.length) {
@@ -51,6 +58,7 @@ function checkAns(idx) {
         }
     } else {
         h2.innerText = "Game Over! Press any key to start.";
+        reset();
     }
 }
 
