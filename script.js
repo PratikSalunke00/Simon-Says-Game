@@ -44,16 +44,29 @@ function levelUp() {
     gameFlash(randBtn);
 }
 
-function checkAns(idx) {
-    if (userSeq[idx] === gameSeq[idx]) {
-        if (userSeq.length == gameSeq.length) {
-            setTimeout(levelUp,1000);
-        }
-    } else {
-        h2.innerText = `Game Over! Press any key to start.`;
-    }
+function reset() {
+    started = false;
+    gameSeq=[];
+    userSeq=[];
+    level = 0;
 }
 
+function checkAns(idx) {
+    // let idx = level-1;
+    if (userSeq[idx] === gameSeq[idx]) {
+        if  (userSeq.length == gameSeq.length) {
+            setTimeout(levelUp, 1000);
+        }
+    } else {
+        h2.innerText = "Game Over! Press any key to start.";
+        
+        // started = false;
+        // gameSeq = [];
+        // userSeq = [];
+        // level = 0;
+        reset();
+    }
+}
 
 function  btnPress() {
     console.log(this);
@@ -66,6 +79,6 @@ function  btnPress() {
 }
 
 let allBtns = document.querySelectorAll(".btn");
-for (btn of allBtns) {
+for (let btn of allBtns) {
     btn.addEventListener("click", btnPress);
 }
